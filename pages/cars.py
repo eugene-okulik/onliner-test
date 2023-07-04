@@ -5,18 +5,17 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 sort_dropdown = (
-    By.CLASS_NAME,
-    'vehicle-form__link vehicle-form__link_other vehicle-form__link_base vehicle-form__link_arrow_bottom'
+    By.XPATH,
+    '//*[@class="vehicle-form__link vehicle-form__link_other vehicle-form__link_base vehicle-form__link_arrow_bottom"]'
 )
 first_car_name = (
     By.CLASS_NAME,
-    'vehicle-form__link vehicle-form__link_primary-alter vehicle-form__link_middle vehicle-form__link_noreflex'
+    'vehicle-form__offers-part_title'
 )
 options_list = (
-    By.CLASS_NAME,
+    By.XPATH,
     (
-        'dropdown-style dropdown-style_primary dropdown-style_small dropdown-style_bottom-right '
-        'vehicle-form__dropdown vehicle-form__dropdown_width_xxs dropdown-style_visible'
+        '//*[@class="dropdown-style__container"]'
     )
 )
 
@@ -35,6 +34,6 @@ class CarsPage(BasePage):
         return self.find(first_car_name).text
 
     def select_option(self, option_id):
-        WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(options_list))
+        WebDriverWait(self.driver, 3).until(EC.presence_of_element_located(options_list))
         self.find(options_list).find_elements(By.CLASS_NAME, 'dropdown-style__item')[option_id].click()
 
