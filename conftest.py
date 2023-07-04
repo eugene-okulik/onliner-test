@@ -7,7 +7,7 @@ import pytest
 def driver():
     options = Options()
     options.add_argument('--headless')
-    chrome_driver = webdriver.Chrome()
+    chrome_driver = webdriver.Chrome(options=options)
     chrome_driver.implicitly_wait(2)
     chrome_driver.maximize_window()
     yield chrome_driver
