@@ -35,5 +35,5 @@ class CarsPage(BasePage):
 
     def select_option(self, option_id):
         WebDriverWait(self.driver, 3).until(EC.presence_of_element_located(options_list))
-        self.find(options_list).find_elements(By.CLASS_NAME, 'dropdown-style__item')[option_id].click()
+        self.find(options_list).find_element(By.XPATH, '//*[@class="dropdown-style__item dropdown-style__item_active"]').click()
 
