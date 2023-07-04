@@ -1,10 +1,13 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 import pytest
 
 
 @pytest.fixture()
 def driver():
-    chrome_driver = webdriver.Chrome()
+    options = Options()
+    options.add_argument('--headless')
+    chrome_driver = webdriver.Chrome(options=options)
     chrome_driver.implicitly_wait(10)
     chrome_driver.maximize_window()
     yield chrome_driver
